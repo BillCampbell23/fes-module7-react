@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" role="img" aria-label="No poster available">
+  <rect width="300" height="450" fill="#18222f"/>
+  <g fill="none" stroke="#31465c" stroke-width="3">
+    <rect x="86" y="160" width="128" height="96" rx="10"/>
+    <circle cx="150" cy="208" r="26"/>
+  </g>
+  <text x="150" y="300" text-anchor="middle" fill="#5d7086"
+        font-family="system-ui, Helvetica, Arial, sans-serif" font-size="16" letter-spacing="1.6">
+    NO POSTER
+  </text>
+</svg>
