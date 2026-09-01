@@ -3,7 +3,7 @@
 A three-route React app for searching films and series, built for the Front End
 Simplified Module 7 final project. React + React Router + Vite. No backend.
 
-**Live:** _(deployment URL)_
+**Live:** https://fes-module7-react.vercel.app
 
 ## What it does
 
