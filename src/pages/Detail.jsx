@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { fetchMovieById, orNull, posterFor } from '../lib/omdb'
 import Logo from '../components/Logo'
 import Message from '../components/Message'
+import Footer from '../components/Footer'
 
 /** One label/value row, skipped entirely when OMDb has nothing for it. */
 function Fact({ label, value }) {
@@ -49,14 +50,14 @@ export default function Detail() {
 
   return (
     <div className="page">
-      <header className="topbar">
+      <nav className="topbar">
         <Link className="topbar__logo" to="/">
           <Logo size={26} />
         </Link>
         <button className="topbar__back" type="button" onClick={() => navigate(-1)}>
           ← Back to results
         </button>
-      </header>
+      </nav>
 
       <main className="page__body">
         {status === 'loading' && (
@@ -123,6 +124,8 @@ export default function Detail() {
           </article>
         )}
       </main>
+
+      <Footer />
     </div>
   )
 }

@@ -15,6 +15,10 @@ Simplified Module 7 final project. React + React Router + Vite. No backend.
 - **Detail page** (`/movie/:id`) — clicking a result pushes its `imdbID` to the
   route, and the page **chains a second API call** to fetch the full record:
   plot, rating, runtime, release date, genres, cast, language, box office
+- **Sort** the results by year (newest or oldest) or title, with relevance —
+  the order the API returned — as the default
+- **Responsive** across desktop, tablet and mobile
+- Every page has a nav bar, a main content section and a footer
 
 ## Routes
 
