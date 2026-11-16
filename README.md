@@ -1,57 +1,42 @@
 # Cinegraph
 
-A three-route React app for searching films and series, built for the Front End
-Simplified Module 7 final project. React + React Router + Vite. No backend.
+A movie and TV search app built with React and React Router for the Front End Simplified Module 7 final project. You search the OMDb API, browse the results, and open a detail page that makes a second, chained API call for the full record.
 
 **Live:** https://fes-module7-react.vercel.app
 
-## What it does
+## Features
 
-- **Homepage** — branded landing page with the search bar
-- **Search** fires on the **Search button** or the **Enter key** — one `onSubmit`
-  handler covers both — then routes to a results page
-- **Results page** (`/search/:query`) — first six matches with posters, behind a
-  skeleton loading state
-- **Detail page** (`/movie/:id`) — clicking a result pushes its `imdbID` to the
-  route, and the page **chains a second API call** to fetch the full record:
-  plot, rating, runtime, release date, genres, cast, language, box office
-- **Sort** the results by year (newest or oldest) or title, with relevance —
-  the order the API returned — as the default
-- **Responsive** across desktop, tablet and mobile
-- Every page has a nav bar, a main content section and a footer
+- Search from the homepage with the Search button or the Enter key (one `onSubmit` handler covers both)
+- Results page (`/search/:query`) shows the first six matches with posters and a skeleton loading state
+- Detail page (`/movie/:id`) chains a second OMDb call by `imdbID` to get the plot, rating, runtime, release date, genres, cast, language and box office
+- Sort results by year (newest or oldest) or by title; the default is the API's relevance order
+- Handles OMDb's quirks: "no results" comes back as HTTP 200 with `Response: "False"`, and missing data comes back as the string `"N/A"`, so the app shows a message, a fallback poster, or hides the field
+- Deep links work on Vercel because `vercel.json` rewrites every path to `index.html`
+- Responsive on desktop, tablet and mobile
 
-## Routes
+## Tech stack
 
-| Path | Page |
-|------|------|
-| `/` | Home — logo, title, search |
-| `/search/:query` | Results — six cards |
-| `/movie/:id` | Detail — chained `&i=` lookup |
+| Tool | Version |
+|---|---|
+| React / React DOM | 19.2.8 |
+| React Router DOM | 7.18.3 |
+| Vite | 8.2.2 |
+| @vitejs/plugin-react | 6.1.1 |
+| oxlint (linting) | 1.81.0 |
+| OMDb API | REST, no backend |
+| Hosting | Vercel |
 
-## Running it
+**Node:** 20.19+ or 22.12+ (Vite 8's requirement). Built and tested on Node 24.14.1.
+
+## Getting started
 
 ```bash
+git clone https://github.com/OptimusDigitalSuite/fes-module7-react.git
+cd fes-module7-react
 npm install
 npm run dev
 ```
 
-## Notes on the API
+No environment variables are needed. The OMDb key is a free-tier key set in `src/lib/omdb.js`, so it ships in the browser bundle. That is a known trade-off of a front-end-only app; a production version would put the calls behind a small server.
 
-The two calls are the point of this project:
-
-- `?apikey=…&s=<query>` — search, returns a list with `imdbID` on each item
-- `?apikey=…&i=<imdbID>&plot=full` — the chained lookup for one title
-
-OMDb reports "nothing found" with **HTTP 200** and a body of
-`{ "Response": "False" }`, so the code branches on `data.Response` rather than
-`res.ok` — `res.ok` alone would render an empty grid with no explanation.
-
-Missing poster art arrives as the string `"N/A"` rather than an absent field, so
-it falls back to `public/no-poster.svg`. Detail fields are checked the same way,
-and any that come back `"N/A"` are omitted rather than printed empty.
-
-`vercel.json` rewrites all paths to `index.html`; without it, loading
-`/movie/tt0078748` directly would 404 on a static host.
-
-The API key is visible in the client bundle. That is inherent to a browser-only
-app with no backend, and it is a free 1,000-requests-per-day tier.
+Other scripts: `npm run build`, `npm run preview`, `npm run lint`.
