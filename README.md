@@ -31,7 +31,7 @@ A movie and TV search app built with React and React Router for the Front End Si
 ## Getting started
 
 ```bash
-git clone https://github.com/OptimusDigitalSuite/fes-module7-react.git
+git clone https://github.com/BillCampbell23/fes-module7-react.git
 cd fes-module7-react
 npm install
 npm run dev
